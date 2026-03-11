@@ -9,7 +9,7 @@
        */
       // Format: https://api.github.com/repos/{owner}/{repo}/issues/
       var GITHUB_ISSUES_LINK =
-        "https://api.github.com/repos/nelsontky/gh-pages-url-shortener-db/issues/";
+        "https://api.github.com/repos/xyz-alpha/gh-pages-url-shortener-db/issues/";
       var PATH_SEGMENTS_TO_SKIP = 0;
 
       /**
@@ -52,7 +52,9 @@
               message === "Not Found" ||
               !title ||
               !isUrl(title) ||
-              url.hostname === location.hostname;
+              url.hostname !== location.hostname ||
+              url.href.includes(`xyz-alpha.github.io/alft`) || // current repo
+              url.href.includes(`xyz-alpha.github.io/alft-db`); // repo for post issue
 
             if (isInvalidUrl) {
               location.replace(homepage);
